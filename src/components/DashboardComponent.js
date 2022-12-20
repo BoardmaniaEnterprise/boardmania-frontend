@@ -25,10 +25,14 @@ const DashboardComponent = () => {
     })();
   }, []);
 
+  const handleSeeMore = (event) => {
+    history.push(`/events/${event.id}`)
+  }
+
   return (
     <div className="container">
       {events.map((val, key) => {
-        return <EventCard event={val} key={key}/>
+        return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} />
       })}
     </div>
   );
