@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import authService from "../service/authService";
 import jwtDecode from "jwt-decode";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+//import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const AuthContext = React.createContext();
 
 export function useAuth() {
@@ -11,7 +11,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     const access_token = localStorage.getItem("access_token");
@@ -41,8 +41,14 @@ export function AuthProvider({ children }) {
     setCurrentUser(jwtDecode(response.data["access_token"]));
     return response.data;
   }
+  async function register(email, password, firstName, lastName, username) {
+    setLoading(true);
+    const response = await authService.register(email, password, firstName, lastName, username);
+    return response.status;
+  }
 
   const value = {
+    register,
     login,
     currentUser,
   };
