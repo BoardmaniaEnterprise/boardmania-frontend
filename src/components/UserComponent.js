@@ -1,10 +1,17 @@
 import {useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useAuth } from '../contexts/AuthContext';
 import userService from '../service/userService';
 
 const UserComponent = () => {
     const [usersList, setUsersList] = useState();
+    const { currentUser } = useAuth();
+    const history = useHistory();
 
     useEffect(() => {
+        if (!currentUser) {
+            history.push("/login");
+        }
         const getUsers = async() => {
             try {
                 const response = await userService.getUsers();
