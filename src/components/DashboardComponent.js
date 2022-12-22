@@ -14,7 +14,7 @@ const DashboardComponent = () => {
     if (!currentUser) {
       history.push("/login");
     }
-    (async function () {
+    const getEvents = async () => {
       try {
         const response = await eventService.getEvents();
         setEvents(response.data);
@@ -22,8 +22,9 @@ const DashboardComponent = () => {
       } catch (err) {
         console.log(err);
       }
-    })();
-  }, []);
+    };
+    getEvents();
+  }, [currentUser]);
 
   const handleSeeMore = (event) => {
     history.push(`/events/${event.id}`)

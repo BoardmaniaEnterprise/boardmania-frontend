@@ -18,7 +18,7 @@ const LoginComponent = () => {
   useEffect(() => {
     if(currentUser) 
       return history.push("/");
-  })
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -33,10 +33,9 @@ const LoginComponent = () => {
     setLoading(false);
   }
   return (
-    <>
+    <div>
       <Container
         className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "90vh" }}
       >
         <div className="w-100" style={{ maxWidth: "400px" }}>
           <Card>
@@ -82,7 +81,7 @@ const LoginComponent = () => {
           </div>
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 

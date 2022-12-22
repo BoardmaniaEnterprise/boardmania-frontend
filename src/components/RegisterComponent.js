@@ -19,7 +19,7 @@ const RegisterComponent = () => {
 
   useEffect(() => {
     if (currentUser) return history.push("/");
-  });
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -49,7 +49,6 @@ const RegisterComponent = () => {
     <>
       <Container
         className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "90vh" }}
       >
         <div className="w-100" style={{ maxWidth: "400px" }}>
           <Card>
