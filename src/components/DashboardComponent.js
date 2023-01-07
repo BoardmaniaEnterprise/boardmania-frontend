@@ -4,6 +4,8 @@ import { useAuth } from "../contexts/AuthContext";
 import eventService from "../service/eventService";
 import "../styles/dashboard.css";
 import EventCard from "./EventCard";
+import { Button } from "react-bootstrap";
+
 
 const DashboardComponent = () => {
   const [events, setEvents] = useState([]);
@@ -14,7 +16,7 @@ const DashboardComponent = () => {
     if (!currentUser) {
       history.push("/login");
     }
-    (async function () {
+    const getEvents = async () => {
       try {
         const response = await eventService.getEvents();
         setEvents(response.data);
@@ -22,7 +24,9 @@ const DashboardComponent = () => {
       } catch (err) {
         console.log(err);
       }
-    })();
+    }
+
+    getEvents();
   }, []);
 
   const handleSeeMore = (event) => {
@@ -31,6 +35,13 @@ const DashboardComponent = () => {
 
   return (
     <div className="container">
+      <div>
+        <Button className="btn-primary" onClick={() => history.push(`/games`)}> Show Games </Button>
+      </div>
+      <br />
+      <div>
+        <Button className="btn-primary" onClick={() => history.push(`/createEvent`)}> Create Event </Button>
+      </div>
       {events.map((val, key) => {
         return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} />
       })}
