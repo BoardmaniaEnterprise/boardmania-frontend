@@ -46,10 +46,15 @@ export function AuthProvider({ children }) {
     const response = await authService.register(email, password, firstName, lastName, username);
     return response.status;
   }
+  async function logout() {
+    localStorage.clear();
+    setCurrentUser(null);
+  }
 
   const value = {
     register,
     login,
+    logout,
     currentUser,
   };
 

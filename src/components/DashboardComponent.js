@@ -5,6 +5,7 @@ import eventService from "../service/eventService";
 import "../styles/dashboard.css";
 import EventCard from "./EventCard";
 import { Button } from "react-bootstrap";
+import TopSection from "./TopSection";
 
 
 const DashboardComponent = () => {
@@ -34,18 +35,17 @@ const DashboardComponent = () => {
   }
 
   return (
-    <div className="container">
-      <div>
-        <Button className="btn-primary" onClick={() => history.push(`/games`)}> Show Games </Button>
+    <>
+      <TopSection/>
+      <div className="main-container">
+        <div>
+          <Button className="btn-primary" onClick={() => history.push(`/createEvent`)}> Create Event </Button>
+        </div>
+        {events.map((val, key) => {
+          return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} />
+        })}
       </div>
-      <br />
-      <div>
-        <Button className="btn-primary" onClick={() => history.push(`/createEvent`)}> Create Event </Button>
-      </div>
-      {events.map((val, key) => {
-        return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} />
-      })}
-    </div>
+    </>
   );
 };
 

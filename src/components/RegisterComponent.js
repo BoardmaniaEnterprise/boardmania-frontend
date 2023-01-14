@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useAuth } from "../contexts/AuthContext";
 import { Container } from "react-bootstrap";
 import "../styles/login.css";
+import TopSection from "./TopSection";
 const RegisterComponent = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -47,11 +48,11 @@ const RegisterComponent = () => {
   }
   return (
     <>
+      <TopSection />
       <Container
         className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "90vh" }}
       >
-        <div className="w-100" style={{ maxWidth: "400px" }}>
+        <div className="w-100" style={{ maxWidth: "400px", top: '100px', position:'absolute' }}>
           <Card>
             <Card.Body className="cardBody">
               <div>

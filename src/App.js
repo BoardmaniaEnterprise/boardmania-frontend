@@ -25,7 +25,7 @@ function App() {
           <PrivateRoute path="/games/:id" component={GameComponent} />
           <PrivateRoute path="/games" component={GamesComponent} />
           <PrivateRoute path="/createEvent" component={CreateEventComponent} />
-          <Route exact path="/" component={LoginComponent} />
+          <Route exact path="/" component={DashboardComponent} />
           <Route path="*" component={DashboardComponent} />
         </Switch>
       </AuthProvider>
