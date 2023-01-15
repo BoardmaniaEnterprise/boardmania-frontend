@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import "../styles/login.css";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import TopSection from "./TopSection";
 
 const LoginComponent = () => {
   const emailRef = useRef();
@@ -18,7 +19,7 @@ const LoginComponent = () => {
   useEffect(() => {
     if(currentUser) 
       return history.push("/");
-  })
+  }, [])
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,9 +35,10 @@ const LoginComponent = () => {
   }
   return (
     <>
+      <TopSection />
       <Container
         className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "90vh" }}
+        style={{ minHeight: "60vh" }}
       >
         <div className="w-100" style={{ maxWidth: "400px" }}>
           <Card>
