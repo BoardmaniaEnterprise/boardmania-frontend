@@ -8,6 +8,7 @@ import DashboardComponent from "./components/DashboardComponent";
 import EventComponent from "./components/EventComponent";
 import GamesComponent from "./components/GamesComponent";
 import GameComponent from "./components/GameComponent";
+import AddGameComponent from "./components/AddGameComponent";
 import CreateEventComponent from "./components/CreateEventComponent";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
@@ -22,6 +23,7 @@ function App() {
           <PrivateRoute path="/users" component={UserComponent} />
           <PrivateRoute path="/dashboard" component={DashboardComponent} />
           <PrivateRoute path="/events/:id" component={EventComponent} />
+          <PrivateRoute path="/games/addGame" component={AddGameComponent} />
           <PrivateRoute path="/games/:id" component={GameComponent} />
           <PrivateRoute path="/games" component={GamesComponent} />
           <PrivateRoute path="/createEvent" component={CreateEventComponent} />

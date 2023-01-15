@@ -35,23 +35,23 @@ const GamesComponent = () => {
 
     return (
         <>
-        <TopSection />
-        <div className="main-container">
-        <div className="btn-container">
-          <Button className="btn-success" onClick={() => history.push(`/createGame`)}> Add Game </Button>
-        </div>
-            <div className="titles-container">
-                <div className="div-name">Name</div>
-                <div className="div-desc">Description</div>
-                <div className="div-details">Min Players</div>
-                <div className="div-details">Max Players</div>
-                <div className="div-details">URL</div>
+            <TopSection />
+            <div className="main-container">
+                <div className="btn-container">
+                    <Button className="btn-success" onClick={() => history.push(`games/addGame`)}> Add Game </Button>
+                </div>
+                <div className="titles-container">
+                    <div className="div-name">Name</div>
+                    <div className="div-desc">Description</div>
+                    <div className="div-details">Min Players</div>
+                    <div className="div-details">Max Players</div>
+                    <div className="div-details">URL</div>
+                </div>
+                {games.map((val, key) => {
+                    return <GameCard game={val} key={key} handleSeeMore={handleSeeMore} />
+                })}
             </div>
-            {games.map((val, key) => {
-                return <GameCard game={val} key={key} handleSeeMore={handleSeeMore} />
-            })}
-        </div>
-        </> 
+        </>
     )
 };
 

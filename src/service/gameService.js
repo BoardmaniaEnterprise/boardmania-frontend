@@ -1,5 +1,7 @@
 import axios from "../axios/axios";
-const GAMES_PATH = "/games"
+import { GameDto } from "../dto/GameDto";
+const GAMES_PATH = "/games";
+
 
 const getGames = async () => {
     const token = localStorage.getItem('access_token');
@@ -10,4 +12,21 @@ const getGames = async () => {
     });
 }
 
-export default { getGames };
+const addGame = async (name, minNumberOfPlayers, maxNumberOfPlayers, description, url) => {
+    const token = localStorage.getItem('access_token');
+    const registerDto = {
+        name: name,
+        minNumberOfPlayers: minNumberOfPlayers,
+        maxNumberOfPlayers: maxNumberOfPlayers,
+        description: description,
+        url: url
+    }
+    return await axios.post(GAMES_PATH, new GameDto(registerDto),
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+}
+
+export default { getGames, addGame };
