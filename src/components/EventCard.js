@@ -13,6 +13,8 @@ const EventCard = (props) => {
         <div>Maximum Number of Players: {event.maxNumberOfPlayers}</div>
         <div>Desfasurare: {event.online ? "Online" : "Fizic"}</div>
         <div>Location: {event.location}</div>
+        <div>Date & Time: {event.dateTime}</div>
+
       </div>
       <div className="footer-container"> 
         <Button className="btn-primary" onClick={() => handleSeeMore(event)}> See More </Button>

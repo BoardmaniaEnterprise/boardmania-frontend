@@ -38,8 +38,8 @@ const DashboardComponent = () => {
     <>
       <TopSection/>
       <div className="main-container">
-        <div>
-          <Button className="btn-primary" onClick={() => history.push(`/createEvent`)}> Create Event </Button>
+        <div style={{marginBottom:"50px"}}>
+          <Button className="btn-success" onClick={() => history.push(`/createEvent`)}> Create Event </Button>
         </div>
         {events.map((val, key) => {
           return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} />

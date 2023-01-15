@@ -22,7 +22,11 @@ export default function TopSection() {
             </div>
             <div className="links-container">
                 {currentUser && (
-                    <div className="div-link" onClick={() => { handleClick("/dashboard") }}> Show Events </div>
+                    <div className="div-link" onClick={() => { handleClick("/my-events") }}> My Events </div>
+                )
+                }
+                {currentUser && (
+                    <div className="div-link" onClick={() => { handleClick("/dashboard") }}> All Events </div>
                 )
                 }
                 {currentUser && (
