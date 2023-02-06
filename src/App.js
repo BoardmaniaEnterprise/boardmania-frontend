@@ -12,6 +12,7 @@ import AddGameComponent from "./components/AddGameComponent";
 import CreateEventComponent from "./components/CreateEventComponent";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
+import EventsOfUserComponent from "./components/EventsOfUserComponent";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <PrivateRoute path="/games/:id" component={GameComponent} />
           <PrivateRoute path="/games" component={GamesComponent} />
           <PrivateRoute path="/createEvent" component={CreateEventComponent} />
+          <PrivateRoute path="/my-events" component={EventsOfUserComponent} />
           <Route exact path="/" component={DashboardComponent} />
           <Route path="*" component={DashboardComponent} />
         </Switch>

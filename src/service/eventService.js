@@ -22,6 +22,24 @@ const getEvents = async () => {
     }
 }
 
+const getEventsOfCurrentUser = async () => {
+    try {
+        const token = localStorage.getItem('access_token');
+        const response = await axios.get(EVENTS_PATH + "/current-user", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response;
+    } catch (error) {
+        if(counter < 5) {
+            counter ++;
+            console.log("Retrying...")
+            setTimeout(getEvents, 500);
+        }
+    }
+} 
+
 const createEvent = async (eventData) => {
     try {
         console.log("Service", eventData);
@@ -53,4 +71,4 @@ const joinEvent = async (voteDtoList, eventId) => {
     }
 }
 
-export default { getEvents, createEvent, joinEvent };
+export default { getEvents, createEvent, joinEvent, getEventsOfCurrentUser };

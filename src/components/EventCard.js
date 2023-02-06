@@ -14,6 +14,7 @@ const EventCard = (props) => {
         <div>Desfasurare: {event.online ? "Online" : "Fizic"}</div>
         <div>Location: {event.location}</div>
         <div>Date & Time: {event.dateTime}</div>
+        <div> Initiator: {event.initiatorName}</div>
 
       </div>
       <div className="footer-container"> 

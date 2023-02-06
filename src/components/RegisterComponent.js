@@ -40,7 +40,7 @@ const RegisterComponent = () => {
       if (status !== 200) {
         throw new Error("Failed to register");
       } 
-      history.push("/");
+      history.push("/login");
     } catch {
       setError("Failed to register");
     }
