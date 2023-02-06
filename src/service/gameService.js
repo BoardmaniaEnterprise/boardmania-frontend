@@ -11,7 +11,14 @@ const getGames = async () => {
         }
     });
 }
-
+const getGamesForEvent = async (id) => {
+    const token = localStorage.getItem('access_token');
+    return await axios.get(GAMES_PATH + "/event/" + id, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+}
 const addGame = async (name, minNumberOfPlayers, maxNumberOfPlayers, description, url) => {
     const token = localStorage.getItem('access_token');
     const registerDto = {
@@ -29,4 +36,4 @@ const addGame = async (name, minNumberOfPlayers, maxNumberOfPlayers, description
         });
 }
 
-export default { getGames, addGame };
+export default { getGames, addGame, getGamesForEvent};

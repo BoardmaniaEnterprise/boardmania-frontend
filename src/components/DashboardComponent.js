@@ -31,7 +31,7 @@ const DashboardComponent = () => {
   }, []);
 
   const handleSeeMore = (event) => {
-    history.push(`/events/${event.id}`)
+    history.push({pathname: `/events/${event.id}`, state: {event:event}});
   }
 
   return (
@@ -42,7 +42,7 @@ const DashboardComponent = () => {
           <Button className="btn-success" onClick={() => history.push(`/createEvent`)}> Create Event </Button>
         </div>
         {events.map((val, key) => {
-          return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} />
+          return <EventCard event={val} key={key} handleSeeMore={handleSeeMore} showBtn={true}/>
         })}
       </div>
     </>

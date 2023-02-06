@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import "../styles/event-card.css";
 
 const EventCard = (props) => {
-  const { event, handleSeeMore } = props;
+  const { event, handleSeeMore, showBtn } = props;
   return (
     <div className="event-card-container">
       <div className="header-container">{event.name}</div>
@@ -17,7 +17,7 @@ const EventCard = (props) => {
 
       </div>
       <div className="footer-container"> 
-        <Button className="btn-primary" onClick={() => handleSeeMore(event)}> See More </Button>
+        {showBtn && <Button className="btn-primary" onClick={() => handleSeeMore(event)}> See More </Button>}
       </div>
     </div>
   );

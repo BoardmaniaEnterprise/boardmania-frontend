@@ -1,5 +1,6 @@
 import axios from "../axios/axios";
 import { createEventDto } from "../dto/CreateEventDto";
+import { JoinEventDto } from "../dto/JoinEventDto";
 const EVENTS_PATH = "/events"
 let counter = 0;
 
@@ -36,4 +37,20 @@ const createEvent = async (eventData) => {
     }
 }
 
-export default { getEvents, createEvent };
+const joinEvent = async (voteDtoList, eventId) => {
+    try {
+        const token = localStorage.getItem('access_token');
+        console.log(voteDtoList, eventId)
+        const response = await axios.post(EVENTS_PATH + "/join/" + eventId, new JoinEventDto(voteDtoList), {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        return response;
+    } catch (error) {
+        console.error(error);
+        return error.response.data.message;
+    }
+}
+
+export default { getEvents, createEvent, joinEvent };
