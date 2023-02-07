@@ -13,12 +13,21 @@ const EventCard = (props) => {
         <div>Maximum Number of Players: {event.maxNumberOfPlayers}</div>
         <div>Desfasurare: {event.online ? "Online" : "Fizic"}</div>
         <div>Location: {event.location}</div>
-        <div>Date & Time: {event.dateTime}</div>
+        <div>
+          Date & Time:{" "}
+          {Date(event.eventDatetimestamp).toLocaleString("en-US", {
+            timeZone: "UTC",
+          })}
+        </div>
         <div> Initiator: {event.initiatorName}</div>
-
       </div>
-      <div className="footer-container"> 
-        {showBtn && <Button className="btn-primary" onClick={() => handleSeeMore(event)}> See More </Button>}
+      <div className="footer-container">
+        {showBtn && (
+          <Button className="btn-primary" onClick={() => handleSeeMore(event)}>
+            {" "}
+            See More{" "}
+          </Button>
+        )}
       </div>
     </div>
   );

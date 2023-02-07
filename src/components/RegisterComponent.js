@@ -20,7 +20,7 @@ const RegisterComponent = () => {
 
   useEffect(() => {
     if (currentUser) return history.push("/");
-  });
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,7 +39,7 @@ const RegisterComponent = () => {
       );
       if (status !== 200) {
         throw new Error("Failed to register");
-      } 
+      }
       history.push("/login");
     } catch {
       setError("Failed to register");
@@ -49,10 +49,11 @@ const RegisterComponent = () => {
   return (
     <>
       <TopSection />
-      <Container
-        className="d-flex align-items-center justify-content-center"
-      >
-        <div className="w-100" style={{ maxWidth: "400px", top: '100px', position:'absolute' }}>
+      <Container className="d-flex align-items-center justify-content-center">
+        <div
+          className="w-100"
+          style={{ maxWidth: "400px", top: "100px", position: "absolute" }}
+        >
           <Card>
             <Card.Body className="cardBody">
               <div>
